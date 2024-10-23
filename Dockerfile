@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 ## A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 RUN npm ci --no-optional
+COPY . .
+ENV NODE_OPTIONS=--openssl-legacy-provider
 ## Bundle app source
 COPY . .
 RUN ionic build
